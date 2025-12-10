@@ -1,0 +1,68 @@
+country	language_family
+AE	Non Indo-European
+AR	Other Indo-European
+AT	Germanic (excl. English)
+BE	Other Indo-European
+BD	Other Indo-European
+BG	Other Indo-European
+BR	Other Indo-European
+CH	Other Indo-European
+CL	Other Indo-European
+CN	Non Indo-European
+CM	Other Indo-European
+CO	Other Indo-European
+CY	Non Indo-European
+CZ	Other Indo-European
+DE	Germanic (excl. English)
+DK	Germanic (excl. English)
+DZ	Non Indo-European
+EC	Other Indo-European
+EG	Non Indo-European
+ES	Other Indo-European
+ET	Non Indo-European
+FI	Germanic (excl. English)
+FR	Other Indo-European
+HK	Non Indo-European
+HR	Other Indo-European
+HU	Non Indo-European
+ID	Non Indo-European
+IN	Other Indo-European
+IR	Other Indo-European
+IQ	Non Indo-European
+IL	Non Indo-European
+IT	Other Indo-European
+JO	Non Indo-European
+JP	Non Indo-European
+KZ	Non Indo-European
+KE	Non Indo-European
+KR	Non Indo-European
+LB	Non Indo-European
+LK	Other Indo-European
+LT	Other Indo-European
+LV	Other Indo-European
+MA	Non Indo-European
+MX	Other Indo-European
+MY	Non Indo-European
+NL	Germanic (excl. English)
+NO	Germanic (excl. English)
+OM	Non Indo-European
+PK	Other Indo-European
+PS	Non Indo-European
+PE	Other Indo-European
+PL	Other Indo-European
+PT	Other Indo-European
+QA	Non Indo-European
+RO	Other Indo-European
+RU	Other Indo-European
+SA	Non Indo-European
+SD	Non Indo-European
+SG	Non Indo-European
+SK	Other Indo-European
+SE	Germanic (excl. English)
+SY	Non Indo-European
+TH	Non Indo-European
+TN	Non Indo-European
+TR	Non Indo-European
+TZ	Non Indo-European
+UA	Other Indo-European
+VN	Non Indo-European
