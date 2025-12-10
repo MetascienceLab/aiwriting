@@ -1,7 +1,7 @@
 # AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists
-* by Jialin Liu, Yongyuan He, Zhihan Zheng, Yi Bu, Jialin Liu
+* by Jialin Liu, Yongyuan He, Zhihan Zheng, Yi Bu, Chaoqun Ni
 
-This repository stores related data and codes for the paper _'AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists
+This repository stores related data and codes for the paper **"AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists"**.
 
 ### Main Files
 - `aiwriting_visualization.ipynb`: Jupyter notebook containing all visualization code
