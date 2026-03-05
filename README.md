@@ -10,7 +10,7 @@ This repository stores related data and codes for the paper **"AI-Assisted Writi
 **Operating System:** This code has been tested on Windows 11. It should be compatible with any standard operating system that supports Python.
 
 **Software:**
-* Python [3.8+] 
+* Python 3.8+
 * Jupyter Notebook or JupyterLab
 
 **Hardware:**
