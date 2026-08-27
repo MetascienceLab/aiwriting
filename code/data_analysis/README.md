@@ -27,12 +27,6 @@ Contains:
 - Difference-in-Difference-in-Differences models for affiliation-country and name-nationality definitions across the reported seniority/productivity indicators;
 - author-level OLS models for AI-author status and productivity change.
 
-Regression and contrast outputs are written to `../../results/tables/`; the event-study plotting input is written to `../../results/figure_data/data_figure_s1.csv`.
-
 ### `03_generate_figures.ipynb`
 
-Reads the generated and released files in `../../results/figure_data/` and `../../results/tables/` and renders the main and supplementary figures. Figure S10 and Figure S11 rely on the supplied `data_figure_s10.csv` and `data_figure_s11_4sections.csv`; the source package did not contain their upstream generation code.
-
-## Computing requirements
-
-`paper_level_analysis.csv` is approximately 493 MB. Fixed-effect models can use substantially more memory than the input file size. Run the regression notebook from a fresh kernel, close other memory-intensive applications, and preserve warnings in the execution record. Exact runtime and peak memory depend on hardware and are not represented as laptop-scale guarantees.
+Reads the generated and released files in `../../results/figure_data/` and `../../results/tables/` and renders the main and supplementary figures.
