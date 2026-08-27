@@ -35,6 +35,4 @@ Reads the generated and released files in `../../results/figure_data/` and `../.
 
 ## Computing requirements
 
-`paper_level_analysis.csv` is approximately 493 MB. Fixed-effect models can use substantially more memory than the input file size, and some specifications drop singleton fixed-effect groups. Run the regression notebook from a fresh kernel, close other memory-intensive applications, and preserve warnings in the execution record. Exact runtime and peak memory depend on hardware and are not represented as laptop-scale guarantees.
-
-The plotting notebook contains stored outputs for visual inspection. Re-execution may create SVG files in the notebook working directory through its existing `savefig` calls; this release does not redirect those files or add a separate figure-output workflow.
+`paper_level_analysis.csv` is approximately 493 MB. Fixed-effect models can use substantially more memory than the input file size. Run the regression notebook from a fresh kernel, close other memory-intensive applications, and preserve warnings in the execution record. Exact runtime and peak memory depend on hardware and are not represented as laptop-scale guarantees.
