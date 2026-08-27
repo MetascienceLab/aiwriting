@@ -11,8 +11,6 @@ Two reproducibility routes are supported:
 1. **Analysis and figure reproduction from released processed data.** This is the practical route for reproducing the statistical tables and figures. The three analysis datasets are downloaded with Git LFS and are consumed directly by the notebooks in `code/data_analysis/`.
 2. **PMC text-processing and AI-usage estimation.** The scripts in `code/data_collection/` and `code/ai_usage_estimation/` reproduce these computational stages from appropriately licensed PMC XML.
 
-The source package used for this release did **not** include the study-specific code and source tables that join the AI-usage estimates to bibliographic, author, journal, institution, and country attributes. Consequently, the released `data/processed/*.csv` files are supplied analysis inputs rather than outputs that can currently be regenerated from the PMC scripts alone. This boundary is documented here rather than obscured by an unsupported end-to-end claim.
-
 ## Repository structure
 
 ```text
@@ -88,15 +86,13 @@ jupyter lab
 2. `02_regression_analysis.ipynb`
 3. `03_generate_figures.ipynb`
 
-The regression notebook contains the parallel-trends analysis, Difference-in-Differences (DiD), Difference-in-Difference-in-Differences (DDD), and author-level OLS models. Generated tables are written to `results/tables/`; plotting inputs are written to `results/figure_data/`. Figure S10 and Figure S11 use the released plotting inputs already stored in `results/figure_data/`.
+The regression notebook contains the parallel-trends analysis, Difference-in-Differences (DiD), Difference-in-Difference-in-Differences (DDD), and author-level OLS models. Generated tables are written to `results/tables/`; plotting inputs are written to `results/figure_data/`. 
 
 ## Route B: PMC text processing and AI-usage estimation
 
 ### 1. Acquire licensed PMC XML
 
 PMC completed a dataset-distribution transition in August 2026. Legacy bulk FTP/OA-package URLs and the former OA Web Service must not be used. The supported source for corpus-scale retrieval is the official [PMC Article Datasets on AWS](https://pmc.ncbi.nlm.nih.gov/tools/pmcaws/); no AWS account is required.
-
-Create a UTF-8 text file containing one PMCID per line. A versioned identifier such as `PMC12345678.1` is preferred. An unversioned identifier is accepted only when the official bucket contains exactly one version; the downloader refuses to guess when several versions exist.
 
 From `code/data_collection/`, run:
 
