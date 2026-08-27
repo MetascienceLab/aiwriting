@@ -4,6 +4,8 @@ Jialin Liu, Yongyuan He, Zhihan Zheng, Yi Bu, and Chaoqun Ni
 
 This repository provides the released code and data for the paper **“AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists.”** It contains code for PMC full-text acquisition and preprocessing, population-level distribution-based estimation of AI-assisted writing, DiD/DDD and author-level statistical analyses, and reproduction of the paper figures.
 
+Last updated: August 26, 2026.
+
 ## Reproducibility scope
 
 Two reproducibility routes are supported:
