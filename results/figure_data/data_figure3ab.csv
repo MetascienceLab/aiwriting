@@ -1,0 +1,9 @@
+﻿country,ai_author,mean_ai_use_change,ci,role
+English-speaking,AI Author,0.05139650552042019,0.0034642199517284245,First Author
+English-speaking,Non-AI Author,0.04613053446782493,0.001584452003262469,First Author
+Non-English-speaking,AI Author,0.0952181026907143,0.002474073219490267,First Author
+Non-English-speaking,Non-AI Author,0.07201491746259593,0.0010945095124515656,First Author
+English-speaking,AI Author,0.06139530157697936,0.0022858599584990305,Corresponding Author
+English-speaking,Non-AI Author,0.057180666310185285,0.00163607785314323,Corresponding Author
+Non-English-speaking,AI Author,0.1022127884818971,0.0018731874776006302,Corresponding Author
+Non-English-speaking,Non-AI Author,0.08964366967218534,0.00119066638314055,Corresponding Author

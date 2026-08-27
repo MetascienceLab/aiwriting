@@ -1,0 +1,25 @@
+,First author (No FE),First author (JS FE),First author (JS+Author FE),Last author (No FE),Last author (JS FE),Last author (JS+Author FE)
+post_gpt,0.0780***,0.0778***,0.0663***,0.0779***,0.0775***,0.0645***
+(post_gpt),(0.0027),(0.0017),(0.0013),(0.0026),(0.0017),(0.0011)
+did_first,-0.0226***,-0.0225***,-0.0195***,,,
+(did_first),(0.0029),(0.0025),(0.0017),,,
+did_last,,,,-0.0222***,-0.0220***,-0.0175***
+(did_last),,,,(0.0028),(0.0025),(0.0015)
+first_author_english_country,0.0190***,0.0166***,,,,
+(first_author_english_country),(0.0018),(0.0014),,,,
+last_author_english_country,,,,0.0188***,0.0160***,
+(last_author_english_country),,,,(0.0016),(0.0013),
+log_paper_authors_count,-0.0196***,-0.0056***,-0.0079***,-0.0193***,-0.0054***,-0.0070***
+(log_paper_authors_count),(0.0022),(0.0008),(0.0009),(0.0021),(0.0009),(0.0005)
+log_paper_ref_count,0.0267***,0.0343***,0.0288***,0.0269***,0.0344***,0.0310***
+(log_paper_ref_count),(0.0018),(0.0013),(0.0013),(0.0018),(0.0014),(0.0011)
+log_sentences_intro_discussion,-0.0109***,-0.0318***,-0.0303***,-0.0114***,-0.0320***,-0.0329***
+(log_sentences_intro_discussion),(0.0031),(0.0015),(0.0016),(0.0031),(0.0016),(0.0012)
+Base controls,Yes,Yes,Yes,Yes,Yes,Yes
+Post main effect,Yes,Yes,Yes,Yes,Yes,Yes
+Journal FE,No,Yes,Yes,No,Yes,Yes
+Subfield FE,No,Yes,Yes,No,Yes,Yes
+Author FE,No,No,Yes,No,No,Yes
+Clustered SE,Journal,Journal,Journal,Journal,Journal,Journal
+N,"1,979,747","1,978,736","965,125","1,951,427","1,950,463","1,391,679"
+R2,0.0839,0.1928,0.6145,0.0839,0.1922,0.4986

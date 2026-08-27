@@ -1,0 +1,2 @@
+first_author_zero_quantile: 1, mean: -0.09390387380713756
+corresponding_author_zero_quantile: 1, mean: -0.36488937250634745

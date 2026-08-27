@@ -1,73 +1,156 @@
 # AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists
-* by Jialin Liu, Yongyuan He, Zhihan Zheng, Yi Bu, Chaoqun Ni
 
-This repository stores related data and codes for the paper **"AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists"**.
+Jialin Liu, Yongyuan He, Zhihan Zheng, Yi Bu, and Chaoqun Ni
 
----
+This repository provides the released code and data for the paper **“AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists.”** It contains code for PMC full-text acquisition and preprocessing, population-level distribution-based estimation of AI-assisted writing, DiD/DDD and author-level statistical analyses, and reproduction of the paper figures.
 
-### System Requirements
+## Reproducibility scope
 
-**Operating System:** This code has been tested on Windows 11. It should be compatible with any standard operating system that supports Python.
+Two reproducibility routes are supported:
 
-**Software:**
-* Python 3.8+
-* Jupyter Notebook or JupyterLab
+1. **Analysis and figure reproduction from released processed data.** This is the practical route for reproducing the statistical tables and figures. The three analysis datasets are downloaded with Git LFS and are consumed directly by the notebooks in `code/data_analysis/`.
+2. **PMC text-processing and AI-usage estimation.** The scripts in `code/data_collection/` and `code/ai_usage_estimation/` reproduce these computational stages from appropriately licensed PMC XML.
 
-**Hardware:**
-Standard computer. No special hardware (e.g., GPU, high-memory server) is required to run the visualization code.
+The source package used for this release did **not** include the study-specific code and source tables that join the AI-usage estimates to bibliographic, author, journal, institution, and country attributes. Consequently, the released `data/processed/*.csv` files are supplied analysis inputs rather than outputs that can currently be regenerated from the PMC scripts alone. This boundary is documented here rather than obscured by an unsupported end-to-end claim.
 
----
+## Repository structure
 
-### Installation
+```text
+code/
+  data_collection/       PMC acquisition, XML extraction, section filtering, tokenization
+  ai_usage_estimation/   Distribution-based maximum-likelihood estimation
+  data_analysis/         Figure-data preparation, DiD/DDD/OLS analyses, figure generation
+data/
+  reference/             Estimator and country reference tables
+  processed/             Released paper- and author-level analysis datasets (Git LFS)
+results/
+  tables/                Released regression outputs
+  figure_data/           Released plotting inputs
+```
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/MetascienceLab/aiwriting
-   ```
-2. Install the required dependencies. 
-   ```bash
-   pip install -r requirements.txt
-   ```
+## System requirements
 
----
+- Python 3.12 (recorded in `.python-version`)
+- Git and [Git LFS](https://git-lfs.com/)
+- JupyterLab or Jupyter Notebook
+- Bash for the parallel AI-usage estimation driver; Windows users can use WSL
 
-### Instructions for Use
+The prepared analysis datasets occupy approximately 525 MB after Git LFS checkout. The full PMC workflow is a corpus-scale job and requires substantially more storage, memory, CPU time, and wall-clock time than the analysis-only route. The fixed-effect regressions may also require substantial memory. The repository therefore does not claim that the full workflow can be run on a standard laptop.
 
-1. Launch Jupyter Notebook in the repository directory:
-   ```bash
-   jupyter notebook
-   ```
-2. Open the `aiwriting_visualization.ipynb` file.
-3. Run all cells in the notebook.
+## Installation and Git LFS
 
-**Expected Output:** The notebook will read the CSV files in the repository and generate the main and supplementary figures presented in the manuscript.
+Install Git LFS before cloning, then retrieve the data objects explicitly:
 
-*Typical run time: Approximately 10 minutes.*
+```bash
+git lfs install
+git clone --branch master https://github.com/MetascienceLab/aiwriting.git
+cd aiwriting
+git lfs pull
+git lfs ls-files
+```
 
----
+`git lfs ls-files` should list the three files under `data/processed/`. If a processed CSV opens with `version https://git-lfs.github.com/spec/v1`, it is still an LFS pointer; rerun `git lfs pull` from the repository root.
 
-### Main Files
-* `aiwriting_visualization.ipynb`: Jupyter notebook containing all visualization code
+Create a Python environment and install the pinned dependencies:
 
-### Data Files
-* `aiwriting_data.csv`: Main dataset containing AI-generated content scores, author information, acceptance dates, etc.
-* `data_figure2.csv`: Data for Figure 2
-* `data_figure_s1.csv`: Data for Figure S1
-* `data_figure_s3_s4_s5.csv`: Data for Figures S3-S5
-* `data_figure_s7.csv`: Data for Figure S7
-* `data_figure_s8.csv`: Data for Figure S8
-* `first_author_data.csv`: First author analysis data
-* `corresponding_author_data.csv`: Corresponding author analysis data
-* `country_epi.txt`: Country-level English Proficiency Index (EPI) data
-* `country_language_type.txt`: Country language type classification data
+```bash
+python -m venv .venv
+```
 
----
+On Linux or macOS:
 
-### License
-This project is covered under the **MIT License**. Please see the `LICENSE` file for more details.
+```bash
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+```
 
-### Citation
-If you find this data and code useful for your research, please cite our paper:
+On Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+```
+
+## Route A: reproduce the analyses and figures
+
+Start JupyterLab from `code/data_analysis/` so the documented relative paths resolve, then run the notebooks in order:
+
+```bash
+cd code/data_analysis
+jupyter lab
+```
+
+1. `01_prepare_figure_data.ipynb`
+2. `02_regression_analysis.ipynb`
+3. `03_generate_figures.ipynb`
+
+The regression notebook contains the parallel-trends analysis, Difference-in-Differences (DiD), Difference-in-Difference-in-Differences (DDD), and author-level OLS models. Generated tables are written to `results/tables/`; plotting inputs are written to `results/figure_data/`. Figure S10 and Figure S11 use the released plotting inputs already stored in `results/figure_data/`.
+
+## Route B: PMC text processing and AI-usage estimation
+
+### 1. Acquire licensed PMC XML
+
+PMC completed a dataset-distribution transition in August 2026. Legacy bulk FTP/OA-package URLs and the former OA Web Service must not be used. The supported source for corpus-scale retrieval is the official [PMC Article Datasets on AWS](https://pmc.ncbi.nlm.nih.gov/tools/pmcaws/); no AWS account is required.
+
+Create a UTF-8 text file containing one PMCID per line. A versioned identifier such as `PMC12345678.1` is preferred. An unversioned identifier is accepted only when the official bucket contains exactly one version; the downloader refuses to guess when several versions exist.
+
+From `code/data_collection/`, run:
+
+```bash
+python download_pmc_cloud.py \
+  --pmcid_file /path/to/pmc_article_versions.txt \
+  --output_directory ../../data/raw/pmc \
+  --manifest ../../data/raw/pmc/download_manifest.csv
+```
+
+The downloader retrieves the official JATS XML and JSON metadata, verifies the NLM-provided MD5 when present, records a SHA-256 digest and license metadata, and packages the files into `pmc_cloud_*.tar.gz`. These archives are compatible with the remaining collection scripts. Users are responsible for respecting the article-level license recorded by PMC. The original raw archives and exact article-version list were not included in the source package used to prepare this release.
+
+For very large retrievals, use the official daily S3 inventory documented by PMC rather than enumerating the bucket. See `code/data_collection/README.md` for the acquisition contract.
+
+### 2. Extract and preprocess text
+
+Run from `code/data_collection/`:
+
+```bash
+python collect_pmc_metadata.py
+python extract_article_sections.py
+python filter_target_sections.py
+python tokenize_sentences.py
+```
+
+Default outputs are written under `data/interim/pmc/`. The extraction stage selects articles with accepted dates from 2021 through 2024; all scripts expose command-line overrides through `--help`.
+
+### 3. Estimate the population-level AI-assisted-writing fraction
+
+Run from a Bash-compatible shell in `code/ai_usage_estimation/`:
+
+```bash
+bash run_all.sh
+```
+
+The driver splits the tokenized corpus, runs the maximum-likelihood estimator in parallel, validates and merges every chunk, and writes `data/interim/ai_usage/ai_usage_estimates.csv`. Configuration is controlled by `config.sh` or environment variables. Method details and the exact input schema are documented in `code/ai_usage_estimation/README.md`.
+
+## Data and provenance
+
+- `data/reference/biorxiv_token_probabilities.parquet`: token-probability table required by the estimator.
+- `data/reference/country_epi.tsv`: country-level English Proficiency Index table used in figure-data preparation.
+- `data/reference/country_language_type.tsv`: country language-family classification used in figure-data preparation.
+- `data/processed/paper_level_analysis.csv`: paper-level analysis input.
+- `data/processed/first_author_analysis.csv`: first-author analysis input.
+- `data/processed/last_author_analysis.csv`: corresponding/last-author analysis input.
+
+The original material package did not include complete source, version, or license metadata for the three reference tables. They are preserved without alteration, and this limitation is recorded in `data/README.md`.
+
+## License
+
+Repository code is released under the MIT License; see `LICENSE`. Third-party data and PMC articles remain subject to their own source and article-level licenses.
+
+## Citation
+
 ```bibtex
 @article{liu2025ai,
   title={AI-assisted writing is growing fastest among non-english-speaking and less established scientists},

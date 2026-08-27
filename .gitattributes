@@ -1,0 +1,11 @@
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.ipynb text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.python-version text eol=lf
+
+data/processed/*.csv filter=lfs diff=lfs merge=lfs -text
