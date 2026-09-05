@@ -141,7 +141,6 @@ The driver splits the tokenized corpus, runs the maximum-likelihood estimator in
 - `data/processed/first_author_analysis.csv`: first-author analysis input.
 - `data/processed/last_author_analysis.csv`: corresponding/last-author analysis input.
 
-The original material package did not include complete source, version, or license metadata for the three reference tables. They are preserved without alteration, and this limitation is recorded in `data/README.md`.
 
 ## License
 
