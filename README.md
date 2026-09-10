@@ -1,10 +1,10 @@
-# AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists
+# AI-Assisted Writing Is Growing Fastest Among Less Established Scientists in Non-English-Speaking Countries
 
 Jialin Liu, Yongyuan He, Zhihan Zheng, Yi Bu, and Chaoqun Ni
 
-This repository provides the released code and data for the paper **“AI-Assisted Writing Is Growing Fastest Among Non-English-Speaking and Less Established Scientists.”** It contains code for PMC full-text acquisition and preprocessing, population-level distribution-based estimation of AI-assisted writing, DiD/DDD and author-level statistical analyses, and reproduction of the paper figures.
+This repository provides the released code and data for the paper **“AI-Assisted Writing Is Growing Fastest Among Less Established Scientists in Non-English-Speaking Countries.”** It contains code for PMC full-text acquisition and preprocessing, population-level distribution-based estimation of AI-assisted writing, DiD/DDD and author-level statistical analyses, and reproduction of the paper figures.
 
-Last updated: August 26, 2026.
+Last updated: September 10, 2026.
 
 ## Reproducibility scope
 
@@ -150,7 +150,7 @@ Repository code is released under the MIT License; see `LICENSE`. Third-party da
 
 ```bibtex
 @article{liu2025ai,
-  title={AI-assisted writing is growing fastest among non-english-speaking and less established scientists},
+  title={AI-assisted writing is growing fastest among less established scientists in non-English-speaking countries},
   author={Liu, Jialin and He, Yongyuan and Zheng, Zhihan and Bu, Yi and Ni, Chaoqun},
   journal={arXiv preprint arXiv:2511.15872},
   year={2025}
